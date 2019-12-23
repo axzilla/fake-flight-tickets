@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/index.css" />
+  </head>
+
+  <body>
+    <div class="root">
+      <!-- Logo -->
+      <%- include ('./expediaLogo'); -%>
+
+      <!-- Header -->
+      <%- include ('expediaHeader', {flight, month, itinerary}); %>
+
+      <!-- Important Information -->
+      <%- include ('expediaImportantInformation'); %>
+
+      <!-- Flightdata Header -->
+      <%- include ('expediaFlightDataHeader', {flight, month}); %>
+
+      <div style="display: flex;">
+        <div style="margin-right: 10px; width: 1000px;">
+          <!-- Flightdata Traveler Information-->
+          <%- include ('expediaFlightDataTravelerInformation', { passengers }); %>
+
+          <!-- Flightdata Flight Information-->
+          <%- include ('expediaFlightDataFlightInformation', {flight, month}); %>
+        </div>
+        <div>
+          <!-- Price Summary -->
+          <%- include ('expediaPriceSummary', {flight, passengers}); %>
+
+          <!-- Additional Flight Services -->
+          <%- include ('expediaAdditionalFlightServices'); %>
+        </div>
+      </div>
+
+      <!-- Airline Rules -->
+      <%- include ('expediaAirlineRules'); %>
+
+      <!-- Need help with your reservation? -->
+      <%- include ('expediaNeedHelp', {itinerary}); %>
+    </div>
+  </body>
+</html>

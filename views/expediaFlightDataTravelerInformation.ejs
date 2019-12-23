@@ -1,0 +1,16 @@
+<!-- Traveler Information -->
+<div class="frame">
+  <div style="margin-bottom: 20px;"><strong>Traveler Information</strong></div>
+  <div style="display: flex;">
+    <div style="width: 50%;">
+      <% passengers.adults.map(adult => { %>
+      <p><strong><%= adult %></strong> <br />Adult</p>
+      <% }) %> <% passengers.kids.map(kid => { %>
+      <p><strong><%= kid %></strong> <br />Child</p>
+      <% }) %>
+    </div>
+    <div>
+      <p>No frequent flyer details provided</p>
+    </div>
+  </div>
+</div>

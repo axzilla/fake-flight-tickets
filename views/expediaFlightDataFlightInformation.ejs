@@ -1,0 +1,47 @@
+<!-- Traveler Information -->
+<div class="frame">
+  <% flight.route.map((route, index) => { %>
+  <div>
+    <div style="display: flex;">
+      <div style="margin-right: 50px;">
+        <img src=<%= `https://images.kiwi.com/airlines/32/${route.operating_carrier}.png` %> />
+      </div>
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+        <div style="display: flex; justify-content: space-between;">
+          <p>
+            <%= route.cityFrom %> (<%= route.flyFrom %>)<br /><%= new Date(route.dTime *
+            1000).toLocaleTimeString() %>
+          </p>
+          <p style="margin: 0 10px;">→</p>
+          <p>
+            <%= route.cityTo %> (<%= route.flyTo %>) <br /><%= new Date(route.aTime *
+            1000).toLocaleTimeString() %>
+          </p>
+        </div>
+        <p><%= timeDifference(route.aTimeUTC, route.dTimeUTC) %></p>
+      </div>
+    </div>
+    <br />
+    <div style="display: flex; align-items: flex-end; flex-direction: column;">
+      <p style="text-align: right;">
+        <%= getAirline(airlines, route.operating_carrier) %>: <%= route.operating_flight_no %><br />Economy
+        () | Confirm seats with the airline*
+      </p>
+    </div>
+  </div>
+  <div style="margin: 30px 0;">
+    <% if(flight.route.length -1 > index) { %>
+    <p
+      style="text-align: right; padding: 5px 0; border-top: 0.5px solid gray; border-bottom: 0.5px solid gray;"
+    >
+      <strong>
+        Layover: <%= timeDifference(flight.route[index + 1].dTimeUTC, flight.route[index].aTimeUTC)
+        %>
+      </strong>
+    </p>
+    <% } %>
+    <div></div>
+  </div>
+  <% }) %>
+</div>
+<br />

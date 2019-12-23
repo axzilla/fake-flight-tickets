@@ -1,0 +1,52 @@
+<!-- Price Summary -->
+<div class="frame">
+  <h4>Price Summary</h4>
+</div>
+<hr />
+<div class="frame" style="border-top: none; padding-left: 30px;">
+  <% passengers.adults.map((adult, index) => { %>
+  <div style="margin-bottom: 20px;">
+    <div class="flex-between">
+      <p><strong>Adult <%= index + 1 %></strong></p>
+      <p>$<%= getAdultTotal(flight) %></p>
+    </div>
+    <div class="flex-between">
+      <p>Flight</p>
+      <p>$<%= getAdultFlight(flight) %></p>
+    </div>
+    <div class="flex-between">
+      <p>Taxes & Fees</p>
+      <p>$<%= getAdultFees(flight) %></p>
+    </div>
+  </div>
+  <% }) %>
+
+  <div></div>
+
+  <% passengers.kids.map((kid, index) => { %>
+  <div style="margin-bottom: 20px;">
+    <div class="flex-between">
+      <p><strong>Child <%= index + 1 %></strong></p>
+      <p>$<%= getChildTotal(flight) %></p>
+    </div>
+    <div class="flex-between">
+      <p>Flight</p>
+      <p>$<%= getChildFlight(flight) %></p>
+    </div>
+    <div class="flex-between">
+      <p>Taxes & Fees</p>
+      <p>$<%= getChildFees(flight) %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<div class="frame">
+  <div class="flex-between">
+    <h4>Total:</h4>
+    <h4>
+      $<%= getTotal(flight, passengers) %>
+    </h4>
+  </div>
+</div>
+<br />
