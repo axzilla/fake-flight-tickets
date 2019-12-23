@@ -1,0 +1,21 @@
+<!-- Flightdata Header -->
+<div>
+  <div class="frame">
+    <h4><%= flight.cityFrom %> → <%= flight.cityTo %></h4>
+    <p>
+      <%= new Date(flight.dTime * 1000).getDate() %> <%= month[new Date(flight.dTime *
+      1000).getMonth()] %>, <%= new Date(flight.dTime * 1000).getFullYear() %>, 2 one way tickets,
+      <%= flight.route.length > 1 ? `${flight.route.length - 1} stops` : 'Non-stop' %>
+      <strong>
+        (<%= (timeDifference(flight.aTimeUTC, flight.dTimeUTC)) %>)
+      </strong>
+    </p>
+  </div>
+  <div class="frame">
+    <p>
+      Your reservation is booked and confirmed. There is no need to call us to reconfirm this
+      reservation.
+    </p>
+  </div>
+</div>
+<br />

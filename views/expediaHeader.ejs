@@ -1,0 +1,11 @@
+<div class="frame">
+  <h2><%= flight.cityTo %></h2>
+  <p>
+    <small>
+      <%= new Date(flight.dTimeUTC * 1000).getDate() %> <%= month[new Date(flight.dTime *
+      1000).getMonth()] %>, <%= new Date(flight.dTime * 1000).getFullYear() %> | Itinerary <%=
+      itinerary %>
+    </small>
+  </p>
+</div>
+<br />

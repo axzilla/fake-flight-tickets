@@ -1,0 +1,41 @@
+/* This css is for PDF Template */
+
+@page {
+  margin: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p,
+li {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.root {
+  width: 21cm;
+  padding: 0 50px;
+}
+
+.frame {
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+.logo {
+  width: 200px;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
