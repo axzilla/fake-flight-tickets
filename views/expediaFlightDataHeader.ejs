@@ -4,8 +4,9 @@
     <h4><%= flight.cityFrom %> → <%= flight.cityTo %></h4>
     <p>
       <%= new Date(flight.dTime * 1000).getDate() %> <%= month[new Date(flight.dTime *
-      1000).getMonth()] %>, <%= new Date(flight.dTime * 1000).getFullYear() %>, 2 one way tickets,
-      <%= flight.route.length > 1 ? `${flight.route.length - 1} stops` : 'Non-stop' %>
+      1000).getMonth()] %>, <%= new Date(flight.dTime * 1000).getFullYear() %>, <%=
+      passengers.adults.length + passengers.kids.length %> one way tickets, <%= flight.route.length
+      > 1 ? `${flight.route.length - 1} stops` : 'Non-stop' %>
       <strong>
         (<%= (timeDifference(flight.aTimeUTC, flight.dTimeUTC)) %>)
       </strong>
