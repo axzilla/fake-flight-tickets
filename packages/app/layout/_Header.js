@@ -12,7 +12,6 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff'
-import GitHubIcon from '@material-ui/icons/GitHub'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -68,13 +67,6 @@ function Header({ toggleDrawer, links }) {
               </Hidden>
             )
           })}
-          <Hidden smDown>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Button color="primary" className={classes.button}>
-                <GitHubIcon />
-              </Button>
-            </a>
-          </Hidden>
         </Toolbar>
       </AppBar>
     </div>
