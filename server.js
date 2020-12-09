@@ -57,7 +57,7 @@ app.post('/create-pdf', async (req, res) => {
     console.log(url)
 
     await page.goto(url, {
-      waitUntil: ['domcontentloaded', 'load', 'networkidle0']
+      waitUntil: 'networkidle0'
     })
 
     const pdf = await page.pdf({ format: 'A4', margin: '450px' })
