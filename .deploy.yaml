@@ -1,0 +1,29 @@
+name: Push stack to heroku
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Release API
+        uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'fake-flight-tickets-api'
+          heroku_email: ${{secrets.E_MAIL}}
+        env:
+          HD_APP_BASE: 'packages/api'
+      - name: Release APP
+        uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'fake-flight-tickets-app'
+          heroku_email: ${{secrets.E_MAIL}}
+        env:
+          HD_APP_BASE: 'packages/app'
+          # HD_REACT_APP_API_URL: 'https://api-02092020.herokuapp.com'

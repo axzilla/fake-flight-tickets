@@ -1,0 +1,6 @@
+export { default as AboutUs } from './AboutUs'
+export { default as Contact } from './Contact'
+export { default as Faq } from './Faq'
+export { default as GetTicket } from './GetTicket'
+export { default as Header } from './Header'
+export { default as HowItWorks } from './HowItWorks'
