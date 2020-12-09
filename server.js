@@ -25,6 +25,7 @@ app.set('view engine', 'ejs')
 // }, 1500000) // every 25 minutes (1500000)
 
 app.get('/create-html', async (req, res) => {
+  console.log('FROM_CREATE_HTML')
   try {
     const decoded = jwtDecode(req.headers.authorization)
     const { flight, passengers } = decoded
