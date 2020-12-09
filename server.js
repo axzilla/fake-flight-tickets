@@ -5,7 +5,7 @@ const path = require('path')
 const puppeteer = require('puppeteer')
 const jwtDecode = require('jwt-decode')
 const cors = require('cors')
-const http = require('http')
+// const http = require('http')
 
 const createJwtToken = require('./utils/createJwtToken')
 const sendTicket = require('./nodemailer/templates/sendTicket')
@@ -20,9 +20,9 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs')
 
-setInterval(function() {
-  http.get('http://faketickets.herokuapp.com')
-}, 1500000) // every 25 minutes (1500000)
+// setInterval(function() {
+//   http.get('http://faketickets.herokuapp.com')
+// }, 1500000) // every 25 minutes (1500000)
 
 app.get('/create-html', async (req, res) => {
   try {
