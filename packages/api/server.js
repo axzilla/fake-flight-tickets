@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 const axios = require('axios')
-const path = require('path')
 const puppeteer = require('puppeteer')
 const cors = require('cors')
 const ejs = require('ejs')
@@ -15,7 +14,6 @@ app.use(cors())
 app.options('*', cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs')
 
 app.post('/create-pdf', async (req, res) => {
@@ -96,4 +94,4 @@ app.post('/create-pdf', async (req, res) => {
   }
 })
 
-app.listen(port, error => console.log(error ? error : `Server Ready on ${port}`))
+app.listen(port, error => console.log(error ? error : `Server Ready on ${port}`)) // eslint-disable-line no-console

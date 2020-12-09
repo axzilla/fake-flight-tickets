@@ -1,4 +1,5 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     browser: true,
     es6: true,
@@ -25,12 +26,13 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'react/no-unused-prop-types': 'error',
+    'no-console': 'error'
   },
   settings: {
     react: {
-      version: 'detect'
+      version: 'latest'
     }
-  },
-  parser: 'babel-eslint'
+  }
 }

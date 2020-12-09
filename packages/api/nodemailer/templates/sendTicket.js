@@ -20,6 +20,6 @@ module.exports = (pdf, email) => {
   }
 
   transporter.sendMail(mailOptions, error => {
-    error ? console.log(error) : console.log(`Mail sent to ${email}`)
+    error ? console.log(error) : console.log(`Mail sent to ${email}`) // eslint-disable-line no-console
   })
 }
