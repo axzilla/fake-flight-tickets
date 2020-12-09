@@ -25,8 +25,8 @@ app.set('view engine', 'ejs')
 // }, 1500000) // every 25 minutes (1500000)
 
 app.get('/create-html', async (req, res) => {
-  console.log('FROM_CREATE_HTML')
   try {
+    console.log('FROM_CREATE_HTML')
     const decoded = jwtDecode(req.headers.authorization)
     const { flight, passengers } = decoded
 
@@ -49,7 +49,14 @@ app.post('/create-pdf', async (req, res) => {
       authorization: token
     })
 
-    await page.goto(`http://localhost:${port}/create-html`, {
+    const url =
+      process.env.NODE_ENV === 'production'
+        ? 'https://fake-flight-tickets-api.herokuapp.com/create-html'
+        : `http://localhost:${port}/create-html`
+
+    console.log(url)
+
+    await page.goto(url, {
       waitUntil: ['domcontentloaded', 'load', 'networkidle0']
     })
 
