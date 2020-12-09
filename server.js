@@ -49,11 +49,10 @@ app.post('/create-pdf', async (req, res) => {
     })
 
     await page.goto(`http://localhost:${port}/create-html`, {
-      waitUntil: 'networkidle0'
+      waitUntil: ['domcontentloaded', 'load', 'networkidle0']
     })
 
     const pdf = await page.pdf({ format: 'A4', margin: '450px' })
-
     res.writeHead(200, { 'Content-Type': 'application/pdf' })
 
     await browser.close()
