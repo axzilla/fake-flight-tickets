@@ -4,6 +4,7 @@ const axios = require('axios')
 const puppeteer = require('puppeteer')
 const cors = require('cors')
 const ejs = require('ejs')
+const { wakeDynos } = require('heroku-keep-awake')
 
 const sendTicket = require('./nodemailer/templates/sendTicket')
 
@@ -94,4 +95,10 @@ app.post('/create-pdf', async (req, res) => {
   }
 })
 
-app.listen(port, error => console.log(error ? error : `Server Ready on ${port}`)) // eslint-disable-line no-console
+app.listen(port, error => {
+  console.log(error ? error : `Server Ready on ${port}`) // eslint-disable-line no-console
+  wakeDynos([
+    'https://fake-flight-tickets-api.herokuapp.com',
+    'https://fake-flight-tickets-app.herokuapp.com'
+  ])
+})
