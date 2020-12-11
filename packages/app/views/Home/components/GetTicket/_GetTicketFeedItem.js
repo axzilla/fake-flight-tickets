@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Proptypes from 'prop-types'
+import domains from 'disposable-email-domains'
 
 import getTime from '../../../../utils/getTime'
 import { createTicketPdf } from '../../../../services'
@@ -53,6 +54,12 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
 
   function handleTicketCreation(event) {
     event.preventDefault()
+    if (domains.includes(email.split('@')[1])) {
+      alert('This email address is not allowed')
+      setEmail('')
+      return
+    }
+
     setIsLoading(true)
 
     const passengers = { kids, adults }

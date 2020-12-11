@@ -27,7 +27,7 @@ const GetTicket = () => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [open, setOpen] = useState(false)
-  const [expanded, setExpanded] = React.useState(false)
+  const [expanded, setExpanded] = useState(false)
   const [nothingFound, setNothingFound] = useState(false)
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
