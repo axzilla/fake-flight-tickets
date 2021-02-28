@@ -18,7 +18,7 @@ app.use(express.json())
 app.set('view engine', 'ejs')
 
 app.get('/awake', (req, res) => {
-  res.status(200).json('Successfullt awaked!')
+  res.status(200).json('Successfully awaked!')
 })
 
 app.post('/create-pdf', async (req, res) => {
