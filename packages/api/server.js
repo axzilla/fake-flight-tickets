@@ -6,7 +6,7 @@ const cors = require('cors')
 const ejs = require('ejs')
 const { wakeDynos } = require('heroku-keep-awake')
 
-const sendTicket = require('./nodemailer/templates/sendTicket')
+// const sendTicket = require('./nodemailer/templates/sendTicket')
 
 const app = express()
 const port = process.env.PORT || 5000
@@ -17,8 +17,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.set('view engine', 'ejs')
 
+app.get('/awake', (req, res) => {
+  res.status(200).json('Successfullt awaked!')
+})
+
 app.post('/create-pdf', async (req, res) => {
-  const { flight, passengers, email } = req.body
+  // const { flight, passengers, email } = req.body
+  const { flight, passengers } = req.body
   try {
     const airlines = await axios.get('https://api.skypicker.com/airlines')
 
@@ -88,7 +93,7 @@ app.post('/create-pdf', async (req, res) => {
     const pdf = await page.pdf({ format: 'A4', margin: '450px' })
     await res.writeHead(200, { 'Content-Type': 'application/pdf' })
     await browser.close()
-    sendTicket(pdf, email)
+    // sendTicket(pdf, email)
     res.end(pdf)
   } catch (error) {
     if (error) throw error

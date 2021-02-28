@@ -11,7 +11,7 @@ import FlightIcon from '@material-ui/icons/Flight'
 import LiveHelpIcon from '@material-ui/icons/LiveHelp'
 import FaceIcon from '@material-ui/icons/Face'
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer'
-import ContactsIcon from '@material-ui/icons/Contacts'
+// import ContactsIcon from '@material-ui/icons/Contacts'
 
 const theme = createMuiTheme({
   palette: {
@@ -29,7 +29,7 @@ function Layout({ children }) {
     { id: 'how-it-works', name: 'HOW IT WORKS', url: '', icon: <QuestionAnswerIcon /> },
     { id: 'faq', name: 'FAQ', url: '', icon: <LiveHelpIcon /> },
     { id: 'about-us', name: 'ABOUT US', url: '', icon: <FaceIcon /> },
-    { id: 'contact', name: 'CONTACT', url: '', icon: <ContactsIcon /> },
+    // { id: 'contact', name: 'CONTACT', url: '', icon: <ContactsIcon /> },
     { id: 'book-flight', name: 'GET TICKET', url: '', icon: <FlightIcon /> }
   ]
 

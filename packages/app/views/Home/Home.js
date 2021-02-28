@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Header, HowItWorks, AboutUs, Faq, GetTicket, Contact } from './components'
+// import { Header, HowItWorks, AboutUs, Faq, GetTicket, Contact } from './components'
+import { Header, HowItWorks, AboutUs, Faq, GetTicket } from './components'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -52,9 +53,9 @@ const Index = () => {
         <span id="about-us">
           <AboutUs />
         </span>
-        <span id="contact">
+        {/* <span id="contact">
           <Contact />
-        </span>
+        </span> */}
       </Grid>
     </>
   )
