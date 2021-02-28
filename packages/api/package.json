@@ -12,6 +12,7 @@
     "express": "4.17.1",
     "heroku-keep-awake": "1.1.2",
     "jsonwebtoken": "8.5.1",
+    "mongoose": "5.11.18",
     "nodemailer": "6.4.2",
     "puppeteer": "5.5.0"
   },

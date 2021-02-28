@@ -1,15 +1,30 @@
 require('dotenv').config()
+
+// Packages
 const express = require('express')
 const axios = require('axios')
 const puppeteer = require('puppeteer')
 const cors = require('cors')
 const ejs = require('ejs')
+const mongoose = require('mongoose')
 const { wakeDynos } = require('heroku-keep-awake')
 
-// const sendTicket = require('./nodemailer/templates/sendTicket')
+// Models
+const Fft = require('./models/Fft')
+
+const sendTicket = require('./nodemailer/templates/sendTicket')
 
 const app = express()
 const port = process.env.PORT || 5000
+
+const db = process.env.MONGODB_URI
+
+const mongooseOptions = {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+}
 
 app.use(cors())
 app.options('*', cors())
@@ -22,9 +37,8 @@ app.get('/awake', (req, res) => {
 })
 
 app.post('/create-pdf', async (req, res) => {
-  // const { flight, passengers, email } = req.body
-  const { flight, passengers } = req.body
   try {
+    const { flight, passengers, email } = req.body
     const airlines = await axios.get('https://api.skypicker.com/airlines')
 
     const html = await ejs.renderFile('./views/expedia.ejs', {
@@ -93,12 +107,16 @@ app.post('/create-pdf', async (req, res) => {
     const pdf = await page.pdf({ format: 'A4', margin: '450px' })
     await res.writeHead(200, { 'Content-Type': 'application/pdf' })
     await browser.close()
-    // sendTicket(pdf, email)
+
+    sendTicket(pdf, email)
+    await Fft.create({ flight, passengers, email })
     res.end(pdf)
   } catch (error) {
     if (error) throw error
   }
 })
+
+mongoose.connect(db, mongooseOptions, () => console.log('MongoDB Connected')) // eslint-disable-line no-console
 
 app.listen(port, error => {
   console.log(error ? error : `Server Ready on ${port}`) // eslint-disable-line no-console

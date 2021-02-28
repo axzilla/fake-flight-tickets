@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Proptypes from 'prop-types'
-// import domains from 'disposable-email-domains'
+import domains from 'disposable-email-domains'
 
 import getTime from '../../../../utils/getTime'
 import { createTicketPdf } from '../../../../services'
@@ -16,7 +16,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
-// import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
   time: { marginBottom: theme.spacing(-0.5) },
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
   const classes = useStyles()
   const [isLoading, setIsLoading] = useState(false)
-  // const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('')
 
   function calcTotalOrigin() {
     const priceAdults = flight.price * adults.length
@@ -48,24 +48,23 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
     setExpanded(isExpanded ? panel : false)
   }
 
-  // function handleEmailChange(event) {
-  //   setEmail(event.target.value)
-  // }
+  function handleEmailChange(event) {
+    setEmail(event.target.value)
+  }
 
   function handleTicketCreation(event) {
     event.preventDefault()
-    // if (domains.includes(email.split('@')[1])) {
-    //   alert('This email address is not allowed')
-    //   setEmail('')
-    //   return
-    // }
+    if (domains.includes(email.split('@')[1])) {
+      alert('This email address is not allowed')
+      setEmail('')
+      return
+    }
 
     setIsLoading(true)
 
     const passengers = { kids, adults }
 
-    // createTicketPdf(flight, passengers, email)
-    createTicketPdf(flight, passengers)
+    createTicketPdf(flight, passengers, email)
       .then(response => {
         const file = new Blob([response.data], { type: 'application/pdf' })
         const fileURL = URL.createObjectURL(file)
@@ -154,7 +153,7 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
           </Typography>
         </Grid>
         <form onSubmit={handleTicketCreation}>
-          {/* <TextField
+          <TextField
             fullWidth
             type="email"
             onChange={handleEmailChange}
@@ -163,9 +162,8 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
             placeholder="E-Mail"
             label="E-Mail"
             variant="outlined"
-          /> */}
-          {/* <Button variant="outlined" color="primary" disabled={!email || isLoading} type="submit"> */}
-          <Button variant="outlined" color="primary" disabled={isLoading} type="submit">
+          />
+          <Button variant="outlined" color="primary" disabled={!email || isLoading} type="submit">
             GET TICKET $0
           </Button>
         </form>
