@@ -1,1 +1,1 @@
-- Use `https://elements.heroku.com/buildpacks/jontewks/puppeteer-heroku-buildpack`
+- Use `https://github.com/jontewks/puppeteer-heroku-buildpack.git`
