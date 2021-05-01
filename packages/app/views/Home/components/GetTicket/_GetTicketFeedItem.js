@@ -16,7 +16,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
-import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
   time: { marginBottom: theme.spacing(-0.5) },
@@ -46,10 +45,6 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false)
-  }
-
-  function handleEmailChange(event) {
-    setEmail(event.target.value)
   }
 
   function handleTicketCreation(event) {
@@ -153,17 +148,7 @@ const GetTicketFeedItem = ({ flight, expanded, setExpanded, adults, kids }) => {
           </Typography>
         </Grid>
         <form onSubmit={handleTicketCreation}>
-          <TextField
-            fullWidth
-            type="email"
-            onChange={handleEmailChange}
-            value={email}
-            margin="normal"
-            placeholder="E-Mail"
-            label="E-Mail"
-            variant="outlined"
-          />
-          <Button variant="outlined" color="primary" disabled={!email || isLoading} type="submit">
+          <Button variant="outlined" color="primary" disabled={isLoading} type="submit">
             GET TICKET $0
           </Button>
         </form>
